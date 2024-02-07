@@ -1,1 +1,1069 @@
-DBMS
+******************DBMS
+Data bases are made to store the data. At low level in computers the data is stored in the form of bits and bytes. Lets understand what is data?
+
+**Data
+Data is a collection of unorganized, raw material. Data has nothing meaningful or infomative. We have to process the data first to extract the information from it.
+
+Our main goal to make decisions with the data. Data is very valuable like we say "Data is new oil". With the help of data we can extract such information that we can make decisions.
+
+For example: 
+Amazon took feedback on every purchase of their products in the form of rating and information of the buyer. So they can check whether people are liking this particular product or not and which age group is buying and in which season and so on. So that they can take decision for further more production of their product. SO here Amazon is collecting data, processing it, extracting valuable information from it and making best decisions.
+
+****************Database
+Database is an electronic place where data can be stored, access, managed and update. To make it real use use DBMS
+
+*************DBMS
+A DBMS is a collection of interrelated data and set of programs (Access, add, update, delete). In simple words DBMS is a software which provide you features like acsess, addition, update and delete and much more customizable queries to play with data in the most convenient and efficient way.
+
+The primary goal of DBMS is to store and retrieve database information in the most efficient and convenient way.
+
+*************Why use DBMS? Not file system?
+In early time file system were used. But it is very hard to scale and maintain them.
+
+1) Data Redundancy and inconsistency: (e.g we are using file system in a bank we had savings accounts only. After 10 years they started offing current account facility. Now a programmer 					who made a code for savings account will have to create another program for current account as both accounts operate on different logic so here the 					programmer will store the information of same person in two places This is called data redundancy. It is a very big issue. And if persons a changes 					his address then he might forget to change it in both places. Here there would be data inconsistency)
+2) Difficulty in accessing data: Programmers will have to write programs to access the data. 
+3) Data Isolation: In file system, It is very hard to maintain the actions between transactions to prevent the data interference with each other. 
+4) Integrity Problem: The integration of new features is very hard in filesystem and hard to ensures the accuracy, completeness, consistency, and validity of an organization's data.
+5) Atomicity problem: Atomicity is a property of DBMS with ensures that the set of database operations all occur or none occur. e.g sending and receiving both should be happenend.
+6) Concurrent access anomalies: Two different persons access the same data. The data should be maintained. e.g your bank account is accessing by both you and your family.
+7) Security problems: Data breaches and low security access.
+
+
+**NOTE**: All above 7 are adv of DBMS and it doesnt means that we cannot do all above in file system but it is very hard, time taking and a lot of effort is required to write programs for every operations. To solve this problem DBMS was created.
+
+**********************Three Schema Architecture
+Schema means design.
+Before understanding 3 schema architeture. First understand what is Abstraction?
+Abstraction is basically a method in which we hide certain information from the user and provide only that information with which he is concerned. e.g A driver do not have concerned about the chemical reactions happening in an engine or how power is transmitting from the engine to the wheels. He is just concerned with the driving of the car. Same thing we do in Operating system as windows we are only exposed to the features. How things are storing and processing at physical level we are not concerned with that.
+
+
+Three Schema Architecture is used in DBMS. The main object is to provide a personalized view for each user.
+It has 3 layers:
+
+1) Physical level/ Internal Level Schema:
+It is the lowest level of abstraction.
+It tells how the data is stored in DB. 
+Like data structures etc. 
+Here we describe physical structure of data in the harddisk. 
+It talks about data encryption, data compression and storage allocation etc.
+Remember we created schema in natoursAPI app in our code.
+Generally while talking about schemas we are referred with physical or internal level schema.
+
+2) Logical Level/ Conceptual level Schema:
+Here we conceputally defines our data structure in the form of a table. 
+Here we provide a generic view to the user. It contains all the information. 
+Logical layer do not care how data is stored and which hardware is used etc. 
+It is just concerned with the organizing of data and What are the relationship between the data. e.g courses are for students and students apply in courses.
+Users at logical level do not aware about physical information of data. Any changes in the physical level will not effect the data representation at logical level. e.g Change the hardware from HDD to SSD will not effect logical level view.
+
+
+3) External Level/ View Level Schema:
+This is the highest level of abstraction. Lets understand it with the example: In Amazon we have information about the buy such as name, CNIC, Phone, Address, Likes, dislikes, Product bought, age. And all this information is stored in the database. It doesnt make sense to give all the information all the departmants of amazon. Logistics department do not have concerned with the likes and dislikes of the user. It just have to deliver the product which user has bought. So in abstraction we hide certain information from the user and provide a personalized view. So here at external level. Only some data fields will be showed to the respective department. In this way the user experience will be enhanced and security will be maintained.
+External schemas can be multiple for multiple users.
+
+*********************Instance
+The collection of information at particular time or moment in a DB is called DB instance.
+
+Database of a school showing 1028 students enrolled at 12pm will considered as an instance.
+and next day DB shows 1050 students enrolled at 1am will considered as another instance.
+
+************Schema
+Schema is design of DB at logical level.
+1) Schemas have attributes such as name, phone number, student ID etc.
+2) Consistency constraints:  here we also defines things such as name cannot be null, primary key cannot be null etc. (Primary keys): Primary key is a unique key which difference someone. 
+3) Relationship between data.
+
+*************Data Model:
+Data modelling is done at conceptual or logical level. Here we describe our data or you can say we design our database how it will look like. Relationships, data sematics, consistency constraints etc. 
+Types of models: we have ER model, Relation model, Object oriented model, Object relational data model etc.
+
+********************Database Language:
+To interact with DB we need a language:
+DDL: Data definition languages: Using this we define our schemas, model our data, provide conisitency constraints such as data cannot be null, name cannot exceed 50 characters and so on.
+DML: Data manipulation language: Using this we manipulate our data such as inserting data, updating, deleting, retreiving data.
+
+SQL offers both features of DDL and DML.
+
+************How will you access your database as your program or app is written in host language such as JS, java, C++
+Here comes the interface. An interface comes in when two incompatible things are supposed to communicate.
+
+For mongoDB we use Mongoose
+For Java we use JDBC ( java database connectivity)
+For C/C++ we use ODBC
+
+These interfaces/ libraries converts our code into SQL or NoSQL queries to interact with the respective database.
+
+**************DBA (Database Administrator)
+DBA is a person who works on at logical level and have control on both data and programs that can access those data e.g DB of statebank will be used by FBR and taxation departments and so on so here DBA is state bank.
+
+Its functions are:
+Schema definition and physical level organization
+Storage structure
+AUthorization control
+Routine maintenance such as Periodic backups, security patches, any upgrades
+
+**********************Database Application Architecture
+
+Tier 1 or T1 Architecture:
+In this architecture client, sevrer and DB all lies in the same computer
+
+Tier 2 or T2 Architecture:
+In this architecture Client sends queries to DB at the server. Security is compromised. DB can be data corrupted if user sent such Queries. you can implement it where very high security is not required and users are not too much
+
+Tier 3 or T3 Architecture:
+In this architecture client send request to application server and then application server send requests to DB.
+
+This architecture is used by big tech companies where there is big data and it imporves the scalability, security and data integrity. Helps in managing multiple servers. It is used in www servers.
+
+**********************ER-model
+Entity Relationship Model
+
+***Entity: Entity is a thing or object in the real world that is distinguishable from all other objects and have some properties. It is represented by a square
+**types of entities:
+we have two types of entities either 
+1) strong (can be strongly distinguished and will have primary key such as student) 
+2) weak (may depend on some other entity such as payment. In case of loan, Payment will be exist when we have took a loan. we cannot uniquely identify them). It is represented by a concurrent double square.
+
+For example:
+Each Student in a college is an entity.
+
+Entity Set: It is a set of entities that have same properties or attributes. Student is an entity set cause students in a class will have same properties like everyone will have name, reg,  DOB etc.
+
+***Attributes
+Attributes are the properties of Entities.
+
+Student will be entity and its name, reg no., DOB, batch will be its attributes.
+
+Attributes can have consistency constraints such as name characters limit etc.
+
+
+****Types of Attributes:
+Simple: Attributes which cannot be further divide or catergorize such as registration number, CNIC number or Bank ID
+Composites: That can be distribute such as address can be divided into street, ZIP code country, city etc. This helps us to access data by any particular attribute.
+Single value: Attributes having only single value such as student ID etc.
+Multi-valued: Attributes have more than one value such as a person can have more than 2 phone numbers.
+Derived: These are derived from some value such as if you know Date of birth of a person you can calculate its age.
+Null: This means that the attribute do not have any value or value doesnt exist or the value will be in future.
+
+*************Relationship
+In ER-Model we make a diagram which represents the relation of attributes with the entities and all have different symbols. Such as dervied attributes will be represented by dotted ellipse, multi-valued attribute willl be represented by double ellipse and composites attribute will have branches.
+
+Example:
+Customer is an entity
+
+customer--> name --> First, middle, last name (composite attribute)
+customer--> Customer ID (simple attribute, single value)
+customer--> Phone number (multi-value)
+customer--> DOB (single value)
+customer--> age (derived)
+customer--> address --> street --> Street name, street no. (composite)
+		    --> City
+		    --> state
+        	    --> Zip Code
+
+A relationship is defined by a dimond shape.
+For example: there are two entities such as Customer, loan so the relationship between them is borrow.
+
+Customer borrow loan
+
+***Types of Relation:
+Strong Relation: Relation between strong entities is called storng relation e.g. Relation between Customer and order will be strong rel. as cutomer and order both can have unique IDs
+Weak Relation: Relation between weak entities is called weak Relation. Loan and payment are weak relation as payment is dependent on loan.
+
+**Degree of relationship:
+1) Uninary Relationship: One entity participate e.g Manager and employees
+2) Binary relationship (commonly used): Two entities will participate e.g Student takes course, customer borrow loans.
+3) Ternary Relationship: Three entities will participate e.g Employes works in a bank branch and do their Job here we have three entities (Employees, branch, Job) and one relation that is 			  work.
+
+
+*********Relationship Constraints: Mapping Cardinality/ Cardinality Ratio
+
+There will be four steps that we are gonna follow to model our data
+1. Different types of relationships between data
+2. Referencing/Noramalization vs. Embedding/Denormalization
+3. Embedding or Referencing other docuements?
+4. Types of referencing
+
+The way we design or model our data can make or break our application. Lets discuss the above four mentioned points one by one:
+
+following are different types of relationship constraints or mapping cardinality ratios:
+
+1 : 1 Relation: Movie--> name (One movie can have only one name)
+1 : Many: There are three sub types:
+	1 : Few: Here a movie can have few awards. A movies cannot have thousands awards. So movie and awards will have 1: few relation.
+	1 : Many: Here movie can have thousands of reviews. So movie and review will have 1:Many relation 
+	1 : Ton: An App can have ton of logs. here it is hard to differentiate between Many and Ton. You can simply take it as a thing which approaches to infinity can be catergories as `	1 : Ton Relation. As an app can have infinite logs. so it is a 1:Ton Relation. The diff. between Many and Ton will help us in selecting whether we are supposed to normalize or 	denormalize the data
+Many : 1: Movies and actors: 10 movies can be cast 1 hero actor.
+Many:Many: There are several actors in a movie. On the same side an Actor can work in a several movies. So this would be catergories as Many:Many Relationship
+
+******************************Participation constraints
+Customer and loan: Partial participation (In customer entity set there can be some customers who did not have taken any loan and some have taken the loan)
+Loan and customer: total participation (In loan entity set all loans will must have a customer. It is not possible that the loan has issued but there is no owner) it is represented by double lines
+
+*****************Extended ER-Features: Specialization
+In specialization we use the concept of inheritance in which there is parent class and then we create children classes. All children classes will also have attributes of their parent class.
+By definition Specialization is basically a splitting of entities into the group of sub-entities on the basis of their functionalities and specialization. It is a top-down approach.
+
+***Why we need specialization feature? 
+The answer is to avoid redundancy. Reduncy means the repeatition of same information at different places. And make our Database blueprint more refined.
+For example:
+
+a person is a parent class having attributes such as name and address.
+then I create an instance of this class as customer and employees
+customer will have customer ID, Profile pic, memership
+Employee will have role and salary
+
+now these two instances will be connected to the person parent class as "Is a" relation.
+Person is a customer
+person is an employee
+
+here customer and employee both have name and address inherite in them.
+
+Here in this way we can add more specialization and easily scale our database.
+such as we can inherite more classes namely Developers, HR, Managers with Employee class. Now Developer, HR, Manager all will have attributes of employee and person. 
+
+**NOTE: By specialization we have categorized each entity group. And each sub-entity group contains only necessary information. Its not like that customer also have salary which doesnt make sense. It allow developers to extract relevant information for sub-entity group
+
+**Other examples:
+Engineer entities can have sub-entities of civil, mechanical and electrical.
+
+Vehicles can have sub-entities of car, buses and trucks and so on. Here there will be some common properties which will be add with the parent entity so it will automatically get inherited with cars, buses, and trucks. and same for the engineer example.
+
+
+******************Generalization
+It is the reverse of Specialization. We go from bottom to top in generalization.
+Actually Generlization and Specialization both end up with the same diagram. There is nothing much difference both are simply the way of thinking. 
+
+let say we you made an entitiy vehicle and then it have sub-entities such as bus, car and truck. Then you noticed that bus, car and truck all have 2 more common properties so instead of adding these common properties you add them in the parent class/entity Vehicle so that these common attributes will automatically get inherit in the sub-entities.
+
+***The reason why need to do generalization is same as of doing specialization. (The answer is to avoid redundancy. Reduncy means the repeatition of same information at different places. And make our Database blueprint more refined.)
+
+**NOTE: Inheritance happens in both generalization and specialization.
+
+**************Participation Inheritance.
+If Parent entitiy is involved in some relation then its child entity will automatically get involved in that relation.
+
+************Aggregation
+How to show relationship among relationships?
+Aggration is the technique 
+
+****************************How to formulate ER-Diagram?
+Steps to follow to make ER-Diagram:
+1) Identify Entity Set
+2) Identify Attributes and their types
+3) Identify the relationships between them entities and constraits (Cardinality mapping and their pariticipation)
+
+
+Example of ER-Model of a Bank
+First we will identify Entity Sets and their types:
+
+**Entity Sets:
+Branch (Strong entity),
+Customer (Strong entity), 
+Employee (Strong entity), 
+saving A/c, 
+current A/C, (For saving and current a/c we can use generalization or specializaiton as they will have common attributes)
+Loan, 
+payment (Weak entity)
+
+**Attributes:
+Branch: name (primary-key), city, assets, liablities.
+Customer: Customer-Id (primary-key), name, address (composite), contact-no (multi-valued), DOB (singl valued), age (derived) 
+Employee: emp-id (primary-key), contact-no (multi-valued), dependant-name (composite), year of service (derived), start-date (single-valued)
+Saving-accounts: interest-rate, daily with-drawl, acc-no, balance
+Current-account: Transaction charges, overdraft amount, acc-no, balance (here acc-no and balance both are common in saving and current a/c so we do not repeat them instead we will use generalzation)
+Loan: loan-number, amount
+Weak-entity: payment no., date, amount
+
+**Relationship
+Cutomer Borrows loan: N:N
+loan orginated by branch N:1
+loan-payment 1:N
+Customer deposit account N:N
+Cutomer banker employe N:1
+Employee manage by Employe
+N:1
+
+
+
+
+*************Relational Model
+Relaitonal model is very similar to ER model but in this model we reperesent our data in the form of tables. My entities will be the columns and rows will be the each entry which we called tuple.
+
+**Degree of table:
+Means No of attributes or we can say number of columns
+**cardinalities: In relational model number of rows/tuple are my cardinalities.
+
+Whenever a DB is designed we first create ER model and then we convert ER-model diagram to relational Model. 
+We convert our entities into the tables and their attributes into the columns for those tables. And for relationship between these entities we use foreign keys
+
+Then with the help of RDBMS--> Relational Database management system (RDMS consists of collection of tables and each table will have unique name)
+It is a software used for the implementation of Relational model.
+We use MySQl, Oracle, etc.
+
+
+
+
+Properties of tables in RDBMS:
+1) The name of Relation must be distinguished from the other.
+2) The values should be atomic (cannot be divided further).
+3) The name of each attribute/column must be unique.
+4) Each tuple must be unique in table
+5) The sequence of rows and columns doesnt matter.
+6) Table must follows the integrity constraints -it helps to maintaint data consistency accross the tables.
+
+
+****Types of keys
+Super key (SK): Any permutation or combination of attributes that can uniquely identify the tuple can be a super key. e.g Combination of name and customer ID. It can be null.
+Candidate Key (CK): Subset of super key. There should be any redundancy. e.g in case of {name, customer ID} super key we can have {customerID} as candidate key. (people can have same names 		    that why it has been excluded to avoid redudancy). It cannot be null.
+Primary Key (PK): Selected from the candidate key set. and has least number of attributes. It cannot be Null.
+Alternate Key: All CK except PK
+Foreign Key (FK): A key which is a primary key of some other table used to define the relation is called Foreign key. For example we have two tables Customer (Customer_Id, name, address, 		  contact-no) and order (order_id, time_stamp, delivery date) here to define the "places" relation between them we will add another attribute in order table which will be 		  the customer Id that is a primary key of customer table. so now, order table (order_id, time_stamp, delivery date, Customer_Id). Now Customer table will be called as 		  parent/referenced table as its primary key has been used and order table will be called as child/referencing table as it is using the foreign key. 
+		*****FOREIGN KEY CAN HAVE NULL VALUE: On delete null. When we delete value from parent table then in child table we put null value of foreign key. and this will not violate 		  delete constraints rule.
+Surrogate Key: Let say you have data of two schools now you wanna merge them. But the problem is that both schools have different format for their registeration number. So we cannot use 	       them as primary or unique key so we ask system to generate a key and assign it. This key is called Surrogate key. It is nothing simply integer.
+
+*************Constraints
+SQL Constraints
+SQL constraints are used to specify rules for the data in a table.
+
+Constraints are used to limit the type of data that can go into a table. This ensures the accuracy and reliability of the data in the table. If there is any violation between the constraint and the data action, the action is aborted.
+
+The following constraints are commonly used in SQL:
+
+NOT NULL - Ensures that a column cannot have a NULL value
+UNIQUE - Ensures that all values in a column are different
+PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+FOREIGN KEY - Prevents actions that would destroy links between tables
+CHECK - Ensures that the values in a column satisfies a specific condition
+DEFAULT - Sets a default value for a column if no value is specified
+CREATE INDEX - Used to create and retrieve data from the database very quickly
+**********Integrity constraints
+RDBMS supports integrity constraints to avoid data inconsistency such as pre-defining the data types of attributes.
+
+***Referential Constraints:
+Insert Constraints: We cannot insert tuple in the child table if its corresponding value is not in the parent table.
+Delete constraints: We cannot delete tuple from the parent table if value corresponding to it is in the childe table.
+
+If you want to delete a value from parent table without violating the delete constraint then you have to delete its corresponding value from the child table also. using On delete cascade.
+
+************Not Null Constraint
+We defines that the value of particular attribute cannot be null
+
+***********Unique Constraint
+We define certain attribute to be unique so that they do not repeat them self such as Registration number.
+
+*********Default Constraint
+Here we define a default value if user didn't provide a value to the attribute.
+
+**********Check Constraint
+This constraints limit the domains of the attribute such as age<=80 etc.
+
+*********Primary Key Constraint
+here we define any attribute a our primary key such as ID
+
+*********Foreign key Constraint
+Whenever there is a relationship between two entities then there must be something common between them. This common attribute must be a primary key an entity set and will act as the foreign key of other entity set. This key will prevent actions that can result in loss of connection between the tables.
+
+
+**********************SQL
+SQL stands for structured query language. We use SQL to perform CRUD operations on Data to RDBMS. MySQL is itself an RDBMS which allows us to perform CRUD operation on data using SQL.
+
+
+***********Install and setting up MySQL
+
+First of all install below applications for your respective operating systems:
+> MySQL Community server
+> MySQL community bench (UI for creating Schemas, Relations of in short designing DB)
+
+> Adding MySQL to Path windows enviromental variables
+
+- Go to: C:\Program Files\MySQL\MySQL Server 8.3\bin
+
+- Open the Start Search, type “env” or “environment variables,” and click on “Edit the system environment variables.”
+
+- In the System Properties window, click on the “Environment Variables…” button.
+
+- In the Environment Variables window, under the "System variables" section, find and select the "Path" variable.
+Click on “Edit…”.
+
+- In the Edit Environment Variable window, click “New” and paste the path to your MySQL bin directory.
+- Click “OK” on all open windows to save your changes.
+
+- Open a new Command Prompt window.
+Type mysql --version to verify that MySQL is recognized
+
+******************Starting MySQL server using CLI
+(make sure you have added MySQL in to you windows env variable path)
+
+>mysql -u root -p
+
+(Enter your password and you will be connected)
+
+************Quick Start
+
+CREATE DATABASE any_name;
+(This command is used to create Database)
+
+USE your_database_name;
+(this command is used to switched to the existing DB)
+
+CREATE TABLE student(id INT PRIMARY KEY, name VARCHAR(225));
+(This command is used to create a table namely student having two attributes along with their defined data types)
+
+INSERT INTO student VALUES(2,'Rabah Ali Shah');
+(This command is used to insert values in the table)
+
+SELECT * FROM student;
+This command is used to filter and display the selected data. * means all
+
+DROP DATABASE IF EXISTS database_name;
+(This command is used to delete database)
+
+
+*************SQL Data Types:
+The data types are used to define the type and domain (length) of an attribute. SQL provides several datatypes. Just google SQL Datatypes and see the table.
+
+**Difference Between VARCHAR and CHAR
+both are used to defined characters but CHAR allocate the fixed space in the memory no matter smaller bit character is storing in it. It will carry the fixed space. But VARCHAR will vary its size in the memory according to the word coming.
+
+***********Types of SQL commands
+****1) DDL (Data Definition Language):
+
+1. CREATE: this query syntax is used to create table in SQL
+Syntax: CREATE TABLE table_name (column_1 datatype, column_2 datatype, column_3 datatype);
+
+2. ALTER TABLE: this query is used to add column in your existing table
+Syntax: ALTER TABLE table_name ADD column_name datatype;
+
+3. DROP: delete table, DB, view, query to delete whole table.
+Syntax: DROP TABLE table_name;
+
+4. TRUNCATE: remove all the tuples from the table.
+
+5. RENAME: Used to Remane the Tables
+Syntax: ALTER TABLE table_name RENAME COLUMN old_name to new_name;
+
+
+****2) DML (data modification language)
+1. INSERT: insert data into a relation, (this query is used to enter data/tuples in the table)
+Syntax: INSERT INTO table_name (column_1, column_2, column_3) VALUES ('Value_1', 'Value_2', 'Value_3'); 
+Shorthand syntax: INSERT INTO table_name VALUES ('Value_1', 'Value_2', 'Value_3');
+Syntax: INSERT INTO users (name,age,birthday) VALUES ('john',12,2003-01-09);
+
+2. UPDATE: update relation data.
+Syntax: UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;
+> ON UPDATE CASCADE
+**NOTE: Can be added to the table while creating constraints. Suppose there is a situation where we have two tables
+such that primary key of one table is the foreign key for another table. if we update the primary key of the first
+table then using the ON UPDATE CASCADE foreign key of the second table automatically get updated.
+
+3. DELETE: delete row(s) from the relation.
+Syntax: DELETE FROM table_name WHERE condition;
+
+Question: What would happen to child entry if parent table’s entry is deleted?
+Answer: You will get an error but to overcome it we will > DELETE CASCADE - (to overcome DELETE constraint of Referential constraints). On deleting the Pk in the parent table the FK in the child table will be automatically get deleted.
+
+Where as If you will use ON DELETE NULL then On deleting the Pk in the parent table the FK in the child table will be automatically get converted to NULL.
+
+**Syntax of DELETE CASCADE:
+>CREATE TABLE ORDER (
+order_id int PRIMARY KEY,
+delivery_date DATE,
+cust_id INT,
+CodeHelp
+
+FOREIGN KEY(cust_id) REFERENCES customer(id) ON DELETE CASCADE
+);
+
+**Synatx of ON DELETE NULL:
+ON DELETE NULL - (can FK have null values?)
+1. CREATE TABLE ORDER (
+order_id int PRIMARY KEY,
+delivery_date DATE,
+cust_id INT,
+FOREIGN KEY(cust_id) REFERENCES customer(id) ON DELETE SET NULL
+);
+
+
+
+****3) DCL (Data Control language): grant or revoke authorities from user.
+1. GRANT: access privileges to the DB
+2. REVOKE: revoke user access privileges.
+
+****4) TCL (Transaction control language): to manage transactions done in the DB
+1. START TRANSACTION: begin a transaction
+2. COMMIT: apply all the changes and end transaction
+3. ROLLBACK: discard changes and end transaction
+4. SAVEPOINT: checkout within the group of transactions in which to rollback.
+
+****5) MANAGING DB (DDL):
+Creation of DB:
+1. CREATE DATABASE IF NOT EXISTS db-name;
+2. USE your_database_name; //need to execute to choose on which DB CREATE TABLE etc commands will be executed.
+//make switching between DBs possible.
+3. DROP DATABASE IF EXISTS your_database_name; //dropping database.
+4. SHOW DATABASES; //list all the DBs in the server.
+5. SHOW TABLES; //list tables in the selected DB.
+
+****6) DRL/DQL (Data Retrieval Language):
+1. Syntax: SELECT <set of column names> FROM <table_name>;
+2. Order of execution of a command in SQL is from RIGHT to LEFT.
+
+*********Question: Can we use SELECT keyword without using FROM clause?
+
+1. Yes, using DUAL Tables.
+2. Dual tables are dummy tables created by MySQL, help users to do certain obvious actions without referring to user defined tables.
+3. e.g., SELECT 55 + 11; // this will give the answer 66 but that answer will be shown in a tuple of a table. And that table will be a dummy table created by MySQL cuz MySql always show data in tables.
+
+************ DRL (cont.):
+***WHERE command:
+Syntax: UPDATE table_name SET column_name = some_value WHERE column_name = some_value
+// query to is used to update or make changes in your existing table.
+E.g., SELECT * FROM customer WHERE age > 18;
+
+***AND Command:
+SELECT * FROM customer WHERE age between 0 AND 100;
+In the above e.g., 0 and 100 are inclusive.
+
+***IN
+SELECT * FROM officers WHERE officer_name IN ('Lakshay', ‘Maharana Pratap', ‘Deepika’);
+
+****AND/OR/NOT
+1. AND: WHERE cond1 AND cond2
+2. OR: WHERE cond1 OR cond2
+3. NOT: WHERE col_name NOT IN (1,2,3,4);
+
+*******IS NULL
+SELECT * FROM customer WHERE prime_status is NULL;
+
+*******Pattern Searching / Wildcard (‘%’, ‘_’) OR Regex:
+here ‘%’, any number of character from 0 to n. Similar to ‘*’ asterisk in regex.
+here  ‘_’, only one character.
+example: SELECT * FROM customer WHERE name LIKE ‘%p_’; //in output the second last word will be "p"
+
+*******ORDER BY
+Sorting the data retrieved using WHERE clause.
+> ORDER BY <column-name> DESC;
+here DESC = Descending and ASC = Ascending
+e.g., SELECT * FROM customer ORDER BY name DESC;
+
+***********GROUP BY
+GROUP BY Clause is used to collect data from multiple records and group the result by one or more column. It is
+generally used in a SELECT statement.
+Groups into category based on column given.
+
+> SELECT c1, c2, c3 FROM sample_table WHERE condition GROUP BY c1, c2, c3.
+
+All the column names mentioned after SELECT statement shall be repeated/written again after GROUP BY, in order to successfully execute the query.
+
+********Aggreagation Functions:
+Used with aggregation functions to perform various actions.
+1. COUNT()
+2. SUM()
+3. AVG()
+4. MIN()
+5. MAX()
+
+
+************DISTINCT
+Find distinct values in the table. (Distinct means that let say you want to find how many job positions are there in a company and you have a data set. You think that you will use SELECT command on Job Positions and you will get the desired result. In actual you will get a complete column where are the job positions will be written. Some job titles will be repeated. You do not want whole job positions list. You just want to know how many job positions are there such as developer, hr etc. SO using distinct with SELECT clause will help you in finding the desired result)
+> SELECT DISTINCT(col_name) FROM table_name;
+
+GROUP BY can also be used for the same
+> SELECT col_name FROM table GROUP BY col_name; same output as above DISTINCT query.
+
+*********SQL is smart enough to realise that if you are using GROUP BY and not using any aggregation function, then
+you mean “DISTINCT”.
+
+
+***********GROUP BY HAVING
+Out of the categories made by GROUP BY, we would like to know only particular thing (cond). Similar to WHERE.
+> Select COUNT(cust_id),country FROM customer GROUP BY country HAVING COUNT(cust_id) > 50;
+
+
+**********Difference between WHERE and HAVING
+1. Both have same function of filtering the row base on certain conditions.
+2. WHERE clause is used to filter the rows from the table based on specified condition
+3. HAVING clause is used to filter the rows from the groups based on the specified condition.
+4. HAVING is used after GROUP BY while WHERE is used before GROUP BY clause.
+5. If you are using HAVING, GROUP BY is necessary.
+6. WHERE can be used with SELECT, UPDATE & DELETE keywords while GROUP BY used with SELECT.
+
+
+***************DDL Constraints:
+*********Primary Key:
+Primary is a unique key, used to differentiate a table.
+Primary key cannot be null, it must be unique. its a good practice to make primary key of INT (integer) data type.
+
+***********Foreign Key:
+Foreign key as its name suggest its a key in a table that is coming from another table. FK refers to PK of other table.
+Each relation can have any number of FK.
+3. CREATE TABLE ORDER (
+id INT PRIMARY KEY,
+delivery_date DATE,
+order_placed_date DATE,
+cust_id INT,
+FOREIGN KEY (cust_id) REFERENCES customer(id)
+);
+
+The table which is using the FK is called child table/ referencing table. And the table of which PK is used as FK is called parent /referenced table.
+
+************UNIQUE constraint:
+1. Unique, can be null, table can have multiple unique attributes.
+2. CREATE TABLE customer (
+...
+email VARCHAR(1024) UNIQUE,
+...
+);
+
+*************CHECK constraints
+checks are implemented while defining our schema model. To allow values which are fulfilling the condition such as domain/length of characters etc.
+1. CREATE TABLE customer (
+...
+CONSTRAINT age_check CHECK (age > 12),
+...
+);
+2. “age_check”, can also avoid this, MySQL generates name of constraint automatically.
+
+***********DEFAULT
+This constraint is used to set default value of an attribute if its value is not provided.
+
+>CREATE TABLE account (
+...
+saving-rate DOUBLE NOT NULL DEFAULT 4.25, //now in case, user will not provide the value of saving-rate attribute then automatically 4.25 value will assigned to the attribute.
+...
+);
+
+**Note: An attribute can have PK and FK both in a table.
+
+
+***********REPLACE
+Mainly used for already present tuple in a table.
+
+It Will work as As UPDATE, using REPLACE with the help of WHERE clause in PK, then that row will be replaced.
+It will work As INSERT, if there is no duplicate data new tuple will be inserted.
+> REPLACE INTO student (id, class) VALUES(4, 3);
+> REPLACE INTO table SET col1 = val1, col2 = val2;
+
+
+************JOINING
+
+***********JOINING TABLES
+All RDBMS are relational in nature, we refer to other tables to get meaningful outcomes.
+FK are used to do reference to other table.
+
+**********INNER JOIN
+Returns a resultant table that has matching values from both the tables or all the tables.
+>SELECT column-list FROM table1 INNER JOIN table2 ON condition1;
+
+>INNER JOIN table3 ON condition2
+
+**********Alias in MySQL (AS)
+1. Aliases in MySQL is used to give a temporary name to a table or a column in a table for the purpose of a particular query. It works as a nickname for expressing the tables or column names. It makes the query short and neat.
+> SELECT col_name AS alias_name FROM table_name;
+> SELECT col_name1, col_name2,... FROM table_name AS alias_name;
+
+**************OUTER JOIN
+*********LEFT JOIN
+This returns a resulting table that takes all the data from left table and the matched data from the right table.
+SELECT columns FROM table LEFT JOIN table2 ON Join_Condition;
+
+**********RIGHT JOIN
+This returns a resulting table that all the data from right table and the matched data from the left table.
+SELECT columns FROM table RIGHT JOIN table2 ON join_cond;
+
+**************FULL JOIN
+This returns a resulting table that contains all data when there is a match on left or right table data.
+Emulated (means there is no direct/built-in command) in MySQL. We have to create this by using LEFT and RIGHT JOIN.
+> LEFT JOIN UNION RIGHT JOIN.
+> SELECT columns FROM table1 as t1 LEFT JOIN table2 as t2 ON t1.id = t2.id
+UNION
+SELECT columns FROM table1 as t1 RIGHT JOIN table2 as t2 ON t1.id = t2.id;
+
+***NOTE: UNION ALL, can also be used this will duplicate values as well while UNION gives unique values.
+
+************CROSS JOIN
+This returns all the cartesian/combinations products of the data present in both tables. Hence, all possible variations are reflected in the output. Used rarely in practical purpose.
+Table-1 has 10 rows and table-2 has 5, then resultant would have 50 rows.
+>SELECT column-lists FROM table1 CROSS JOIN table2;
+
+***********SELF JOIN
+A SELF JOIN for a given table is a join that performs between two identical copies of that table. Used very less. Emulated using INNER JOIN.
+> SELECT columns FROM table as t1 INNER JOIN table as t2 ON t1.id = t2.id;
+
+*****************SET Operations
+Row wise combination. Comines table vertically. Datatypes of the corresponding columns from each table should be the same. It generate distinct rows. Combination is a resulting set from two or more select statement.
+***********UNION
+Combines two or more SELECT statements.
+>SELECT * FROM table1
+UNION
+SELECT * FROM table2;
+
+Number of column, order of column must be same for table1 and table2.
+***********INTERSECT
+Returns common values of the tables. Emulated.
+> SELECT DISTINCT column-list FROM table-1 INNER JOIN table-2 USING(join_cond);
+> SELECT DISTINCT * FROM table1 INNER JOIN table2 ON USING(id);
+
+**********MINUS
+This operator returns the distinct row from the first table that does not occur in the second table. Emulated.
+> SELECT column_list FROM table1 LEFT JOIN table2 ON condition WHERE table2.column_name IS NULL;
+> e.g., SELECT id FROM table-1 LEFT JOIN table-2 USING(id) WHERE table-2.id IS NULL;
+
+
+**********************Sub-Queries
+Its basically a concept of dividing tasks into small task.
+Outer query depends on inner query.
+Alternative to joins.
+Nested queries.
+>Syntax: SELECT column_list (s) FROM table_name WHERE column_name OPERATOR
+(SELECT column_list (s) FROM table_name [WHERE]);
+> e.g., SELECT * FROM table1 WHERE col1 IN (SELECT col1 FROM table1);
+Sub queries exist mainly in 3 clauses
+
+Inside a WHERE clause.
+Inside a FROM clause.
+Inside a SELECT clause.
+
+
+********Subquery using FROM clause
+
+> SELECT MAX(rating) FROM (SELECT * FROM movie WHERE country = ‘India’) as temp;
+
+********Subquery using SELECT
+SELECT (SELECT column_list(s) FROM T_name WHERE condition), columnList(s) FROM T2_name WHERE
+condition;
+
+***********Derived Subquery
+SELECT columnLists(s) FROM (SELECT columnLists(s) FROM table_name WHERE [condition]) as new_table_name;
+
+**********Co-related sub-queries (like a loop)
+With a normal nested subquery, the inner SELECT query
+runs first and executes once, returning values to be used by
+the main query. A correlated subquery, however, executes
+once for each candidate row considered by the outer query.
+In other words, the inner query is driven by the outer query.
+
+
+************JOIN vs Sub-queries
+*****JOINs are:
+faster
+it put maximum calculation burden on RDBMS
+it is complex, difficult to implement
+
+****Sub-queries are:
+slower
+put max calculation burden on user
+easier to implement
+
+*******************MySQL VIEW:
+Views can be understand by the concept of higher level abstraction. In views we provide or show only necessary data of the table/schemas about which the user is concern other information is keep hidden from the user.
+Below as some syntax of creating, deleting and modifying the views.
+> CREATE VIEW view_name AS SELECT columns FROM tables [WHERE conditions];
+> ALTER VIEW view_name AS SELECT columns FROM table WHERE conditions;
+> DROP VIEW IF EXISTS view_name;
+> CREATE VIEW Trainer AS SELECT c.course_name, c.trainer, t.email FROM courses c, contact t WHERE c.id = t.id; (View
+using Join clause).
+
+*************** COMMENTS in SQL
+******Multi line comment:
+
+/*SELECT * FROM Customers;
+SELECT * FROM Products;
+SELECT * FROM Orders;
+SELECT * FROM Categories;*/
+
+****Single Line Comment
+--Happy Comment
+
+****************BACKUP DATABASE
+> BACKUP DATABASE databasename TO DISK = 'filepath';
+> BACKUP DATABASE testDB TO DISK = 'D:\backups\testDB.bak';
+> BACKUP DATABASE databasename TO DISK = 'filepath' WITH DIFFERENTIAL;
+A differential back up only backs up the parts of the database that have changed since the last full database backup.
+
+*************Changing the DATATYPE
+>ALTER TABLE table_name ALTER COLUMN column_name datatype;
+
+************How to disable safe mode in MySQL:
+SET SQL_SAFE_UPDATES = 0;
+
+when safe mode is on then actions such as deleting table will not be executed.
+
+*******************What is a Stored Procedure?
+A stored procedure is a prepared SQL code that you can save, so the code can be reused over and over again.
+So if you have an SQL query that you write over and over again, save it as a stored procedure, and then just call it to execute it.
+You can also pass parameters to a stored procedure, so that the stored procedure can act based on the parameter value(s) that is passed.
+
+Stored Procedure Syntax:
+
+>CREATE PROCEDURE procedure_name
+AS
+sql_statement
+GO;	
+
+>EXEC procedure_name;
+
+
+
+
+
+
+
+
+
+
+*******************
+2. Referencing/Noramalization vs. Embedding/Denormalization
+In Referecning or Normalization we keep our data separated and well organized. We always add references of chiled object in parent objects object. 
+For exmaple:
+Abstraction is applied to treat relationships as higher level entities. 
+
+For example:
+we have a "work on" relationship between job, employe and branch.
+
+we want to add an entity manager which will manage all of them. so here we will consider relationship between job, employe and branch as single higher level entity and then will its relation with manager entity as "manages" relation.
+Now we can read this relation as 
+
+Manager manages "relationship between job, employe and branch"
+
+//Movie Name
+{
+  "_id": ObjectID('222'),
+  "title": "Intersteller",
+  "releaseYear": '2014',
+  "actors":[
+    ObjectID('555'),
+    ObjectID('666'),
+    ObjectID('777'),
+
+  ]
+}
+//Actor 1
+{
+  "_id": ObjectID('555'),
+  "name": "Matthew Mc",
+  "age": '50',
+  "born":"Uvale, USA"
+}
+//Actor 2
+{
+  "_id": ObjectID('666'),
+  "name": "Andriedue",
+  "age": '26',
+  "born":"LA, USA"
+}
+//Actor 3
+{
+  "_id": ObjectID('777'),
+  "name": "Anne Hathaway",
+  "age": '37',
+  "born":"NYC, USA"
+}
+
+
+//Here Moview Name object is a parent object which conatains all the IDs of actors.
+PROS and CONS :
+1. Its easier to query each document on its own
+2. we need more than one query to get data from the refered object
+
+In Embedding or denoramilzation all the data is embedded in the parent object. It is not separated as above.
+For example:
+{
+  "_id": ObjectID('222'),
+  "title": "Intersteller",
+  "releaseYear": '2014',
+  "actors":[
+    //Actor 1
+    { 
+      "name": "Matthew Mc",
+      "age": '50',
+      "born":"Uvale, USA"
+    },
+    //Actor 2
+    { 
+      "name": "Andriedue",
+      "age": '26',
+      "born":"LA, USA"
+    },
+    //Actor 3
+    {
+      "name": "Anne Hathaway",
+      "age": '37',
+      "born":"NYC, USA"
+    }
+
+  ]
+}
+
+
+// here you can see the actors and movie both are in the same object:
+
+PROS and CONS 
+1. Performance: We get all the information in one query.
+2. Impossible to query the embedded document on its own.
+
+
+**************How to decide when to embedd/de-normalize and when to reference/normalize the data?
+There are few factors on which we determine whether the data should be normalize or de-normalize. The decision would not be made on the basis of any factor in isolation. The decision would be made in combination.
+There is NO HARD RULE to decide in which form the data should be sturctured.
+
+Relationship Type:                 Embedded/De-normaliztion: 1: FEW 		Referencing/Normalization: 1:Many
+(How two datasets are 					     1: Many					    1:Ton
+related to each other)											    Many:Many
+
+For example:
+
+We have a two dataset: Movies + Images (100) Here it is a 1:Many Relationship. Here since the images are not too much. So therefore, we can simply embed or de-normalize the data.
+
+Data Access Pattern:                 Embedded/De-normaliztion: Data is mostly Read 		Referrencing/Normalization: Data is updated a lot
+(How often data is read  				       Data doesn't change quickly			            (low Read/write Ratio)
+and write: Read/Write Ratio)				       (High Read/write Ratio)				
+
+For example:
+
+If there is a dataset of Movies + Images then in this case the images and movies are only read there is no way to update the image. So in this case simply embedd the data is suitable. Whereas if there is a dataset of Movies + Reviews then we can normalize/referrencing the data as reviews can be updated a lot. 
+
+
+Data Closeness:                 Embedded/De-normaliztion: Dataset really belong together 		Referrencing/Normalization: We frequently need to query both datasets on their own.
+(How much data is  					     					    
+related. How we want											    
+to query)
+
+For example:
+If there is a datasets of user+ email address then in this case it is suitable to have emails embedded in users object. Whereas if there is a data set such as movies + images then in this case we should go for normalization. As there is case in which user have to tell the name of a movie on the basis of the image shown to him. Then here we are querying two datasets on their own so normalizing/referecing the data would be more suitable. 
+
+
+NOTE: There is max 16MB limit on Document in mongoDB we cannot exceed this limit. So remember this limitation while modeling your data.
+
+************Types of Referencing/Normalization
+Once we have let say decided to Normalize our data then we still have to go through to select one out of three types of referencing.
+1. Child Referencing:
+{
+  "_id": ObjectID('222'),
+  "title": "Intersteller",
+  "releaseYear": '2014',
+  "actors":[
+    ObjectID('555'),
+    ObjectID('666'),
+    ObjectID('777'),
+
+  ]
+}
+//Actor 1
+{
+  "_id": ObjectID('555'),
+  "name": "Matthew Mc",
+  "age": '50',
+  "born":"Uvale, USA"
+}
+//Actor 2
+{
+  "_id": ObjectID('666'),
+  "name": "Andriedue",
+  "age": '26',
+  "born":"LA, USA"
+}
+//Actor 3
+{
+  "_id": ObjectID('777'),
+  "name": "Anne Hathaway",
+  "age": '37',
+  "born":"NYC, USA"
+}
+
+// Here this type of referecing is called child Referencing. This type of referencing is only suitable for 1: FEW relationship type. The reason is that as you can see in parent array of Movies the actor array can be long long enough as if there would be so many actors and as we all know in MongoDB each object is count as each document which size should not exceed  16MB. But in case of soo many actors the actors array would be large enough to make the size of this document/obj to exceed 16MB. So therefore, this child refercing is suitable for 1:FEW relationship where its child array have few child elements.
+
+1. Parent Referencing:
+
+//parent
+{
+  "_id": ObjectID('23'),
+  "app": "My Movie Database",
+
+}
+
+//children
+{
+  "_id": ObjectID('1'),
+  "app": ObjectID('23'),
+  "type": 'error',
+  "timestamp": 23453287432
+}
+
+{
+  "_id": ObjectID('2'),
+  "app": ObjectID('23'),
+  "type": 'error',
+  "timestamp": 23453287432
+}
+
+//Here  you can see every child remember his parent by their IDs but parents have no idea about their children. This case very suitable for 1:Many and 1: Ton relationship type. As there is no fear of exceeding 16MB for each document.
+
+Two-way Referencing:
+{
+  "_id": ObjectID('23'),
+  "title": "Intersteller",
+  "releaseYear": '2014',
+  "actors":[
+    ObjectID('555'),
+    ObjectID('666'),
+    ObjectID('777'),
+    //and many more...
+
+  ]
+}
+
+//Actor 1
+{
+  "_id": ObjectID('555'),
+  "name": "Matthew Mc",
+  "age": '50',
+  "born":"Uvale, USA",
+  "movies":[
+	ObjectID('23'),
+        //and many more
+]
+}
+
+//Actor 2
+{
+  "_id": ObjectID('666'),
+  "name": "Andriedue",
+  "age": '26',
+  "born":"LA, USA",
+  "movies":[
+	ObjectID('23'),
+        //and many more
+]
+}
+//Actor 3
+{
+  "_id": ObjectID('777'),
+  "name": "Anne Hathaway",
+  "age": '37',
+  "born":"NYC, USA",
+  "movies":[
+	ObjectID('23'),
+        //and many more
+]
+}
+
+
+// Here in this case both the parents and childs are referecing each other. cause An actor can work in several movies and A movie can have several actors. So this type of referencing is best for many-many relation.
+
+
+****************Summary*********
+1. Sturcture you data the way your application queries and updates data.
+2. Identify the question arises from the application use case first and then model your data. So that the questions can get answered in the most efficient way.
+3. In general, always favor embedding/De-normalizing, unless there is a good reason for normalizing it. Especially for 1:FEW and 1:Many relationships.
+4. A 1:Ton and MANY:MANY relationships are usually the good reason to go for normalizing the data.
+5. favor referecning when the data is updated alot and if you need to access a dataset on its own.
+6. Use embed/denormalization when the data is mostly read but rarely updated.
+7. Do not allow arrays to grow indefinitely. Therefore if you need to normalize, use Child referencing for 1:Few or 1:Many relationship and use Parent referencing for 1:Ton relationships.
+8. Use two way referencing for Many:Many Relationship.
+
+
+
+
+
